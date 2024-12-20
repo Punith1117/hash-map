@@ -1,6 +1,6 @@
 class HashMap {
-    constructor(size) {
-        this.size = size;
+    constructor() {
+        this.size = 16;
         this.buckets = new Array(this.size);
         this.elements = 0;
         this.loadFactor = 0.5;
@@ -44,7 +44,7 @@ class HashMap {
     
     has(key) {
         let hashCode = this.hash(key);
-        let index = hashCode % 16;
+        let index = hashCode % this.size;
         let bucket = this.buckets[index];
         for (let i = 0, pair = bucket[i] ; i < bucket.length; i++) {
             if (pair[i] == key) {
@@ -57,7 +57,7 @@ class HashMap {
     remove(key) {
         if (this.has(key)) {
             let hashCode = this.hash(key);
-            let index = hashCode % 16;
+            let index = hashCode % this.size;
             let bucket = this.buckets[index];
             let i, pair
             for (i = 0, pair = bucket[i]; pair[i] == key; i++);
@@ -116,7 +116,7 @@ class HashMap {
         }
         return arr
     }
-    
+
     display() {
         for (let bucket of this.buckets) {
             if (bucket == undefined) {
@@ -133,7 +133,7 @@ class HashMap {
     
 }
 
-let m = new HashMap(16);
+let m = new HashMap();
 console.log(m.buckets)
 m.set('ice cream', 'cornetto');
 m.set('color', 'blue');
