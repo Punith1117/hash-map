@@ -104,6 +104,19 @@ class HashMap {
         return arr
     }
 
+    entries() {
+        let arr = []
+        for (let bucket of this.buckets) {
+            if (bucket != undefined) {
+                for (let pair of bucket) {
+                    if (pair != undefined)
+                        arr.push(pair)
+                }
+            }
+        }
+        return arr
+    }
+    
     display() {
         for (let bucket of this.buckets) {
             if (bucket == undefined) {
@@ -146,3 +159,4 @@ m.set('Carlos', 'value 2');
 m.set('CarLOS', 'value 3');
 console.log(m.keys());
 console.log(m.values());
+console.log(m.entries());
