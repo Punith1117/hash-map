@@ -68,6 +68,10 @@ class HashMap {
         } 
         return false
     }
+    
+    length() {
+        return this.elements
+    }
 
     display() {
         for (let bucket of this.buckets) {
@@ -96,9 +100,11 @@ m.set('blue', 'mine');
 m.set('Carla', 'value 1');
 m.set('Carlos', 'value 2');
 m.set('CarLOS', 'value 3');
-m.display()
 let value = m.get('blue')
 console.log(value)
 let valueExists = m.has('yellow');
 console.log(valueExists)
+m.display();
 m.remove('Carla')
+m.display();
+console.log(m.length())
