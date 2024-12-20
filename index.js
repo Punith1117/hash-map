@@ -134,8 +134,6 @@ class HashMap {
         let condition = this.size * this.loadFactor
         if (this.elements >= condition) {
             let entries = this.entries();
-            console.log(entries)
-            console.log(this.size)
             this.size *= 2;
             this.buckets = new Array(this.size)
             for (let pair of entries) {
@@ -147,17 +145,20 @@ class HashMap {
 
 let m = new HashMap();
 console.log(m.buckets)
-m.set('ice cream', 'cornetto');
-m.set('color', 'blue');
-m.set('Name', 'you');
-m.set('yellow', 'mine');
-m.set('red', 'mine');
-m.set('blue', 'mine');
-m.set('Carla', 'value 1');
-m.set('Carlos', 'value 2');
+m.set('apple', 'red')
+m.set('banana', 'yellow')
+m.set('carrot', 'orange')
+m.set('dog', 'brown')
+m.set('elephant', 'gray')
+m.set('frog', 'green')
+m.set('grape', 'purple')
+m.set('hat', 'black')
+m.set('ice cream', 'white')
+m.set('jacket', 'blue')
+m.set('kite', 'pink')
 m.display()
-m.set('CarLOS', 'value 3');
-console.log(' new map: ')
+m.set('lion', 'golden')
+console.log('\n Refactored map: \n')
 m.display()
 // let value = m.get('blue')
 // console.log(value)
