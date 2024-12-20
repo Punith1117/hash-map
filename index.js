@@ -30,6 +30,7 @@ class HashMap {
         }
         this.buckets[index].push([key, value]);
         this.elements++
+        this.refactor();
     }
     
     get(key) {
@@ -131,6 +132,19 @@ class HashMap {
         }
     }
     
+    refactor() {
+        let condition = this.size * this.loadFactor
+        if (this.elements >= condition) {
+            let entries = this.entries();
+            console.log(entries)
+            console.log(this.size)
+            this.size *= 2;
+            this.buckets = new Array(this.size)
+            for (let pair of entries) {
+                this.set(pair[0], pair[1])
+            }
+        }
+    }
 }
 
 let m = new HashMap();
@@ -143,20 +157,23 @@ m.set('red', 'mine');
 m.set('blue', 'mine');
 m.set('Carla', 'value 1');
 m.set('Carlos', 'value 2');
+m.display()
 m.set('CarLOS', 'value 3');
-let value = m.get('blue')
-console.log(value)
-let valueExists = m.has('yellow');
-console.log(valueExists)
-m.display();
-m.remove('Carla')
-m.display();
-console.log(m.length())
-m.clear()
-m.set('blue', 'mine');
-m.set('Carla', 'value 1');
-m.set('Carlos', 'value 2');
-m.set('CarLOS', 'value 3');
-console.log(m.keys());
-console.log(m.values());
-console.log(m.entries());
+console.log(' new map: ')
+m.display()
+// let value = m.get('blue')
+// console.log(value)
+// let valueExists = m.has('yellow');
+// console.log(valueExists)
+// m.display();
+// m.remove('Carla')
+// m.display();
+// console.log(m.length())
+// m.clear()
+// m.set('blue', 'mine');
+// m.set('Carla', 'value 1');
+// m.set('Carlos', 'value 2');
+// m.set('CarLOS', 'value 3');
+// console.log(m.keys());
+// console.log(m.values());
+// console.log(m.entries());
