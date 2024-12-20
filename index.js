@@ -42,6 +42,22 @@ class HashMap {
         return null
     }
     
+    has(key) {
+        if (this.buckets.length == 0) {
+            return false
+        } else {
+            for (let bucket of this.buckets) {
+                if ((bucket == undefined) || (bucket.length == 0))
+                    continue;
+                for (let pair of bucket) {
+                    if (pair[0] == key)
+                        return true
+                }
+            }
+            return false
+        }
+    }
+    
     display() {
         for (let bucket of this.buckets) {
             if (bucket == undefined) {
@@ -59,6 +75,7 @@ class HashMap {
 }
 
 let m = new HashMap(16);
+console.log(m.buckets)
 m.set('ice cream', 'cornetto');
 m.set('color', 'blue');
 m.set('Name', 'you');
@@ -71,3 +88,5 @@ m.set('CarLOS', 'value 3');
 m.display()
 let value = m.get('blue')
 console.log(value)
+let valueExists = m.has('yellow');
+console.log(valueExists)
