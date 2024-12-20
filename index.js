@@ -78,6 +78,32 @@ class HashMap {
         return true;
     }
 
+    keys() {
+        let arr = []
+        for (let bucket of this.buckets) {
+            if (bucket != undefined) {
+                for (let pair of bucket) {
+                    if (pair != undefined)
+                        arr.push(pair[0])
+                }
+            }
+        }
+        return arr
+    }
+
+    values() {
+        let arr = []
+        for (let bucket of this.buckets) {
+            if (bucket != undefined) {
+                for (let pair of bucket) {
+                    if (pair != undefined)
+                        arr.push(pair[1])
+                }
+            }
+        }
+        return arr
+    }
+
     display() {
         for (let bucket of this.buckets) {
             if (bucket == undefined) {
@@ -114,3 +140,9 @@ m.remove('Carla')
 m.display();
 console.log(m.length())
 m.clear()
+m.set('blue', 'mine');
+m.set('Carla', 'value 1');
+m.set('Carlos', 'value 2');
+m.set('CarLOS', 'value 3');
+console.log(m.keys());
+console.log(m.values());
