@@ -54,6 +54,21 @@ class HashMap {
         return false
     }
     
+    remove(key) {
+        if (this.has(key)) {
+            let hashCode = this.hash(key);
+            let index = hashCode % 16;
+            let bucket = this.buckets[index];
+            let i, pair
+            for (i = 0, pair = bucket[i]; pair[i] == key; i++);
+            bucket.splice(i-1, 1);
+            this.buckets[index] = bucket;
+            this.elements--;
+            return true;
+        } 
+        return false
+    }
+
     display() {
         for (let bucket of this.buckets) {
             if (bucket == undefined) {
@@ -86,3 +101,4 @@ let value = m.get('blue')
 console.log(value)
 let valueExists = m.has('yellow');
 console.log(valueExists)
+m.remove('Carla')
