@@ -73,6 +73,11 @@ class HashMap {
         return this.elements
     }
 
+    clear() {
+        this.buckets = new Array(16);
+        return true;
+    }
+
     display() {
         for (let bucket of this.buckets) {
             if (bucket == undefined) {
@@ -108,3 +113,4 @@ m.display();
 m.remove('Carla')
 m.display();
 console.log(m.length())
+m.clear()
