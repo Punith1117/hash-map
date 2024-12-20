@@ -3,7 +3,7 @@ class HashMap {
         this.size = 16;
         this.buckets = new Array(this.size);
         this.elements = 0;
-        this.loadFactor = 0.5;
+        this.loadFactor = 0.75;
     }
     
     hash(key) {
