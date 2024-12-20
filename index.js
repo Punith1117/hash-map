@@ -44,11 +44,9 @@ class HashMap {
     }
     
     has(key) {
-        let hashCode = this.hash(key);
-        let index = hashCode % this.size;
-        let bucket = this.buckets[index];
-        for (let i = 0, pair = bucket[i] ; i < bucket.length; i++) {
-            if (pair[i] == key) {
+        let entries = this.entries();
+        for (let pair of entries) {
+            if (pair[0] == key) {
                 return true
             }
         }
@@ -163,8 +161,8 @@ console.log(' new map: ')
 m.display()
 // let value = m.get('blue')
 // console.log(value)
-// let valueExists = m.has('yellow');
-// console.log(valueExists)
+let keyExists = m.has('yello');
+console.log(keyExists)
 // m.display();
 // m.remove('Carla')
 // m.display();
