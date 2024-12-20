@@ -43,19 +43,15 @@ class HashMap {
     }
     
     has(key) {
-        if (this.buckets.length == 0) {
-            return false
-        } else {
-            for (let bucket of this.buckets) {
-                if ((bucket == undefined) || (bucket.length == 0))
-                    continue;
-                for (let pair of bucket) {
-                    if (pair[0] == key)
-                        return true
-                }
+        let hashCode = this.hash(key);
+        let index = hashCode % 16;
+        let bucket = this.buckets[index];
+        for (let i = 0, pair = bucket[i] ; i < bucket.length; i++) {
+            if (pair[i] == key) {
+                return true
             }
-            return false
         }
+        return false
     }
     
     display() {
