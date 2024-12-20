@@ -121,7 +121,7 @@ class HashMap {
     display() {
         for (let bucket of this.buckets) {
             if (bucket == undefined) {
-                console.log('undefined bucket')
+                console.log(undefined)
                 continue
             }
             
